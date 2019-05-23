@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+   <body>
+      <table border = 1>
+         <thead>
+            <td>NAME</td>
+            <td>ADDRESS</td>
+            <td>MAC</td>
+            <td>MANUFACTURER</td>
+            <td>INTERFACE</td>
+            <td>DATE</td>
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row[0]}}</td>
+               <td>{{row[1]}}</td>
+               <td>{{row[2]}}</td>
+               <td>{{row[3]}}</td>
+               <td>{{row[4]}}</td>
+               <td>{{row[5]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+      
+      <a href = "/">回到上一頁</a>
+   </body>
+</html>
