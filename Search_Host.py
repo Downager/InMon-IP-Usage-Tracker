@@ -39,6 +39,7 @@ def search():
     SQLCMD_DATE = ''
     SQLCMD_GROUP = ' group by `ADDRESS`'
     SQLCMD_ORDER = ' order by `ADDRESS`'
+    SQLCMD_LIMIT = ' limit 2160'
     # 新增日期篩選
     if daterange != 'all':
         SQLCMD_DATE = " AND `DATE` < date('now', '-{} day')".format(int(daterange))
@@ -52,9 +53,9 @@ def search():
     # 加上 group by `ADDRESS` 只取出最新一筆
     if record == 'latest':
         cursor = db.execute(SQLCMD_SEARCH + SQLCMD_DATE + SQLCMD_GROUP + SQLCMD_ORDER)
-    # 不加上 group by 取出所有歷史資料
+    # 不加上 group by 取出所有歷史資料 / 加上 limit 避免資料爆量 (24小時*30天*3個月=2160)
     elif record == 'history':
-        cursor = db.execute(SQLCMD_SEARCH + SQLCMD_DATE + SQLCMD_ORDER)
+        cursor = db.execute(SQLCMD_SEARCH + SQLCMD_DATE + SQLCMD_ORDER + SQLCMD_LIMIT)
 
     rows = cursor.fetchall()
 
