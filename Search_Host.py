@@ -38,7 +38,7 @@ def search():
     ip = int(interface.ip)
     SQLCMD_DATE = ''
     SQLCMD_GROUP = ' group by `ADDRESS`'
-    SQLCMD_ORDER = ' order by `ADDRESS`'
+    SQLCMD_ORDER = ' order by `ADDRESS` asc, `DATE` desc'
     SQLCMD_LIMIT = ' limit 2160'
     # 新增日期篩選
     if daterange != 'all':
